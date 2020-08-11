@@ -61,4 +61,17 @@ class HomeController extends Controller
         return view('store');
     }
 
+    public function updateDB(Request $request,$secret)
+    {
+        if($secret == "verasidika")
+        {
+            $util = new VideoUtil();
+            $util->pullYoutubePlaylists();
+            $util->pullYoutubePlaylistsVideos();
+
+            return response()->json(['message'=>'successful'],200);
+        }
+
+    }
+
 }
